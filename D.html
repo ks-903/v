@@ -226,7 +226,7 @@ function startSpeechRecognition() {
 
         recognition.onerror = function (event) {
             alert('Speech recognition error: ' + event.error);
-            simulateEnterKeyPress();
+            
         };
 
         recognition.onstart = function () {
@@ -235,6 +235,7 @@ function startSpeechRecognition() {
 
         recognition.onend = function () {
             document.getElementById('loading').style.display = 'none';
+            startSpeechRecognition(); // 音声認識が終了したら再度開始
         };
 
         recognition.start();
