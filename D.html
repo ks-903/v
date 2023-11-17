@@ -235,6 +235,7 @@ function startSpeechRecognition() {
 
         recognition.onerror = function (event) {
             alert('Speech recognition error: ' + event.error);
+            simulateEnterKeyPress();
         };
 
         recognition.onstart = function () {
@@ -249,9 +250,9 @@ function startSpeechRecognition() {
        // setInterval(function(){
             
        //           },6000);
-    setTimeout(function () {
-         simulateEnterKeyPress()
-       },6000);
+    // setTimeout(function () {
+    //      simulateEnterKeyPress()
+    //    },6000);
     } else {
         alert('Speech Recognition is not supported in this browser.');
     }
