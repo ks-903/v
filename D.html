@@ -41,19 +41,13 @@
 
 <body>
     <button id="startButton" onclick="switchToTextareaAndStartRecognition()">ようこそこれから始める</button>
-    <textarea id="textToSpeak" rows="1" placeholder="英語か日本語を入力または喋ってください" onkeydown="handleKeyDwn()"></textarea>
+    <textarea id="textToSpeak" rows="1" placeholder="フランス語か日本語を入力または喋ってください" onkeydown="handleKeyDwn()"></textarea>
 
     <br>
     <div id="output" style="white-space: pre-line; padding: 10px; border: 1px solid #ccc;"></div>
     <div id="loading">Translating...</div>
 
-
-   
-
-
-
-
-    <script>
+<script>
 　　　　let recognition; // Declare recognition variable globally
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -67,8 +61,8 @@ const entext = document.getElementById("textToSpeak").value;
 const detectedLanguage = detectLanguage(entext);
 
 // 翻訳を行う
-if (detectedLanguage === 'EN') {
-    output('EN', 'JA', entext)
+if (detectedLanguage === 'FR') {
+    output('FR', 'JA', entext)
         .then((translatedText) => {
             animateText(0, translatedText);
             speak(translatedText); // Call speak after translation
@@ -77,7 +71,7 @@ if (detectedLanguage === 'EN') {
             console.error("Translation Error:", error);
         });
 } else if (detectedLanguage === 'JA') {
-    output('JA', 'EN', entext)
+    output('JA', 'FR', entext)
         .then((translatedText) => {
             animateText(0, translatedText);
             speak(translatedText); // Call speak after translation
@@ -172,11 +166,11 @@ function detectLanguage(text) {
     const englishRegex = /[a-zA-Z]/;
 
     if (englishRegex.test(text)) {
-        return 'EN';
+        return 'FR';
     } else if (japaneseRegex.test(text)) {
         return 'JA';
     } else {
-        return 'EN';
+        return 'FR';
     }
 }
 
@@ -214,11 +208,12 @@ function animateText(index, originalText) {
         }, 800);
     }
 }
+
 function startSpeechRecognition() {
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
         recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         recognition.continuous = false;
-        recognition.lang = ['ja-JP', 'en-US'];
+        recognition.lang = ['ja-JP', 'fr-FR'];
         //recognition.lang = ['ja-JP', 'fr-FR', 'fr-FR', 'de-DE', 'es-ES', 'it-IT', 'pt-BR', 'zh-CN', 'ru-RU', 'pt-PT'];
 
 
@@ -248,7 +243,6 @@ function startSpeechRecognition() {
     }
 }
 
-
 function stopSpeechRecognition() {
     if (recognition && recognition.running) {
         recognition.stop();
@@ -266,12 +260,17 @@ function switchToTextarea() {
 }
 
 function simulateEnterKeyPress() {
-    stopSpeechRecognition();
     const event = new KeyboardEvent('keydown', { 'key': 'Enter' });
     document.getElementById("textToSpeak").dispatchEvent(event);
-    
+    stopSpeechRecognition();
 }
 </script>
+   
+
+
+
+
+   
 </body>
 
 </html>
