@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ks-903 Hand magic</title>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        video, canvas {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="se" preload="auto">
+        <source src="camera-shutter1.mp3" type="audio/mp3">
+    </audio>
+    <video id="input" autoplay muted></video>
+    <canvas id="output"></canvas>
+    <div id="outputText"></div>
+    <div id="fingerCountDisplay"></div>
+    <p id="currentVideoFileName"></p>
+
+    <script src="hmd7.js"></script>
+</body>
+</html>
