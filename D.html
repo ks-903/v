@@ -222,16 +222,19 @@ function startSpeechRecognition() {
         recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         recognition.continuous = false;
         recognition.lang = ['ja-JP', 'en-US'];
+        //recognition.lang = ['ja-JP', 'fr-FR', 'fr-FR', 'de-DE', 'es-ES', 'it-IT', 'pt-BR', 'zh-CN', 'ru-RU', 'pt-PT'];
+
 
         recognition.onresult = function (event) {
             const transcript = event.results[0][0].transcript;
+
             document.getElementById("textToSpeak").value = transcript;
             simulateEnterKeyPress();
         };
 
         recognition.onerror = function (event) {
             alert('Speech recognition error: ' + event.error);
-           
+            simulateEnterKeyPress();
         };
 
         recognition.onstart = function () {
@@ -240,9 +243,6 @@ function startSpeechRecognition() {
 
         recognition.onend = function () {
             document.getElementById('loading').style.display = 'none';
-            // 音声認識が終了したら再度開始
-            startSpeechRecognition() 
-           
         };
 
         recognition.start();
