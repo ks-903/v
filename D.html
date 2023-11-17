@@ -244,8 +244,10 @@ function startSpeechRecognition() {
         recognition.onend = function () {
             document.getElementById('loading').style.display = 'none';
         };
-
-        recognition.start();
+     setInterval(function(){
+            recognition.start();
+                 },6000);
+        //recognition.start();
     } else {
         alert('Speech Recognition is not supported in this browser.');
     }
@@ -268,9 +270,10 @@ function switchToTextarea() {
 }
 
 function simulateEnterKeyPress() {
+    stopSpeechRecognition();
     const event = new KeyboardEvent('keydown', { 'key': 'Enter' });
     document.getElementById("textToSpeak").dispatchEvent(event);
-    stopSpeechRecognition();
+    
 }
 </script>
 </body>
