@@ -244,10 +244,14 @@ function startSpeechRecognition() {
         recognition.onend = function () {
             document.getElementById('loading').style.display = 'none';
         };
-     setInterval(function(){
-            recognition.start();
-                 },6000);
-        //recognition.start();
+        recognition.start();
+        setTimeout(function () {
+       // setInterval(function(){
+            
+       //           },6000);
+    setTimeout(function () {
+         simulateEnterKeyPress()
+       },6000);
     } else {
         alert('Speech Recognition is not supported in this browser.');
     }
