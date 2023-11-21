@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Face detection on the browser using javascript !</title>
-<!-- You can replace JSDeliver with another CDN if you prefer to -->
-<head>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.js"
-    crossorigin="anonymous"></script>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensory Editor</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-  <!-- Your other HTML and JavaScript code here -->
-
-  <script defer src="script.js"></script>
-  <link rel="stylesheet" href="style.css">
+        textarea {
+            width: 80%;
+            height: 300px;
+            font-size: 16px;
+            resize: none;
+        }
+    </style>
 </head>
 <body>
-    <video id="video" width="600" height="450" autoplay>
+    <textarea id="codeEditor" placeholder="Write your code..."></textarea>
+    <script>
+        const textarea = document.getElementById('codeEditor');
+
+        // キータイプ時の触覚フィードバック
+        textarea.addEventListener('input', () => {
+            // ここに触覚フィードバックのコードを追加
+            console.log('Tactile feedback: Key pressed');
+        });
+
+        // マウスホバー時の触覚フィードバック
+        textarea.addEventListener('mouseover', () => {
+            // ここに触覚フィードバックのコードを追加
+            console.log('Tactile feedback: Mouse over');
+        });
+
+        // クリック時の触覚フィードバック
+        textarea.addEventListener('click', () => {
+            // ここに触覚フィードバックのコードを追加
+            console.log('Tactile feedback: Click');
+        });
+    </script>
 </body>
 </html>
