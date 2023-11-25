@@ -1,0 +1,33 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P2P Example</title>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.1.2/simplepeer.min.js"></script>
+  <script>
+    const peer1 = new SimplePeer({ initiator: true });
+    const peer2 = new SimplePeer();
+
+    peer1.on('signal', data => {
+      peer2.signal(data);
+    });
+
+    peer2.on('signal', data => {
+      peer1.signal(data);
+    });
+
+    peer1.on('connect', () => {
+      peer1.send('Hello, peer2!');
+    });
+
+    peer2.on('data', data => {
+      console.log('Received:', data.toString());
+    });
+  </script>
+</body>
+</html>
